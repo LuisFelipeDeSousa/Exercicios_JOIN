@@ -39,12 +39,11 @@ INSERT INTO Alunos (Nome, Idade) VALUES ('Alice', 18),
 									    ('Valentina', 15),
 									    ('Joaquim', 49);										
 
--- Alice
+
 INSERT INTO CaracteristicasAluno (IdAluno, IdCaracteristica) VALUES
 ((SELECT Id FROM Alunos WHERE Nome = 'Alice'),(SELECT Id FROM Caracteristicas WHERE Nome = 'Organizado(a)')),
 ((SELECT Id FROM Alunos WHERE Nome = 'Alice'),(SELECT Id FROM Caracteristicas WHERE Nome = 'Altruísta'));									   
 
--- Sophia
 INSERT INTO CaracteristicasAluno (IdAluno, IdCaracteristica) VALUES 
 ((SELECT Id FROM Alunos WHERE Nome = 'Sophia'),(SELECT Id FROM Caracteristicas WHERE Nome = 'Pontual')),
 ((SELECT Id FROM Alunos WHERE Nome = 'Sophia'),(SELECT Id FROM Caracteristicas WHERE Nome = 'Observadora')),
@@ -52,29 +51,24 @@ INSERT INTO CaracteristicasAluno (IdAluno, IdCaracteristica) VALUES
 ((SELECT Id FROM Alunos WHERE Nome = 'Sophia'),(SELECT Id FROM Caracteristicas WHERE Nome = 'Egoísta')),
 ((SELECT Id FROM Alunos WHERE Nome = 'Sophia'),(SELECT Id FROM Caracteristicas WHERE Nome = 'Sensível'));									   
 
--- Miguel
 INSERT INTO CaracteristicasAluno (IdAluno, IdCaracteristica) VALUES
 ((SELECT Id FROM Alunos WHERE Nome = 'Miguel'),(SELECT Id FROM Caracteristicas WHERE Nome = 'Criativo(a)')),
 ((SELECT Id FROM Alunos WHERE Nome = 'Miguel'),(SELECT Id FROM Caracteristicas WHERE Nome = 'Intolerante'));									   
 
--- Heitor
 INSERT INTO CaracteristicasAluno (IdAluno, IdCaracteristica) VALUES
 ((SELECT Id FROM Alunos WHERE Nome = 'Heitor'),(SELECT Id FROM Caracteristicas WHERE Nome = 'Egoísta')),
 ((SELECT Id FROM Alunos WHERE Nome = 'Heitor'),(SELECT Id FROM Caracteristicas WHERE Nome = 'Proativo(a)')),
 ((SELECT Id FROM Alunos WHERE Nome = 'Heitor'),(SELECT Id FROM Caracteristicas WHERE Nome = 'Indelicado(a)')),
 ((SELECT Id FROM Alunos WHERE Nome = 'Heitor'),(SELECT Id FROM Caracteristicas WHERE Nome = 'Egoísta'));									   
 
--- Valentina
 INSERT INTO CaracteristicasAluno (IdAluno, IdCaracteristica) VALUES
 ((SELECT Id FROM Alunos WHERE Nome = 'Valentina'),(SELECT Id FROM Caracteristicas WHERE Nome = 'Pessimista'));									   
 
--- Joaquim
 INSERT INTO CaracteristicasAluno (IdAluno, IdCaracteristica) VALUES
 ((SELECT Id FROM Alunos WHERE Nome = 'Joaquim'),(SELECT Id FROM Caracteristicas WHERE Nome = 'Flexível')),
 ((SELECT Id FROM Alunos WHERE Nome = 'Joaquim'),(SELECT Id FROM Caracteristicas WHERE Nome = 'Paciente')),
 ((SELECT Id FROM Alunos WHERE Nome = 'Joaquim'),(SELECT Id FROM Caracteristicas WHERE Nome = 'Empático(a)')),
 ((SELECT Id FROM Alunos WHERE Nome = 'Joaquim'),(SELECT Id FROM Caracteristicas WHERE Nome = 'Altruísta'));						  
-
 
 SELECT a.Nome, a.Idade, c.Nome 'Características'
 FROM Alunos a
