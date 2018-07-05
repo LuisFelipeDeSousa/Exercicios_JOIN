@@ -1,4 +1,4 @@
-﻿-- Venda de carros --
+﻿--VENDA DE CARROS--
 
 DROP TABLE carros; -- Para apagar determinados dados
 DROP TABLE pessoas;
@@ -44,5 +44,25 @@ INSERT INTO Carros(IdPessoa, Marca, Modelo, AnoLancamento, AnoFabricacao, Motor,
 
 SELECT * FROM Carros;
 SELECT * FROM Pessoas;
+
+
+/*Execute os comandos abaixo conforme o descrito:
+Liste os carros juntamente com o dono do carro
+Liste os carros do Samuel*/
+
+SELECT Carros.Id 'Carros', Pessoas.Id 'Proprietário'
+FROM Carros, Pessoas
+JOIN Carros ON(Carros.id = Pessoas.Id)
+ORDER BY Carros.Pessoas, Pessoas.Carros;
+
+SELECT Carros.Id 'Carros de Samuel', (Pessoa.Id)
+FROM Pessoas
+JOIN Pessoa ON ('Samuel' = Pessoa.Id)
+
+
+
+
+
+
 
 

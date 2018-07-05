@@ -1,4 +1,7 @@
-﻿/*ALTER TABLE CaracteristicasAluno DROP CONSTRAINT FKCaracteristica;
+﻿----CARACTERISTICAS-----
+
+
+/*ALTER TABLE CaracteristicasAluno DROP CONSTRAINT FKCaracteristica;
 ALTER TABLE CaracteristicasAluno DROP CONSTRAINT FKAluno;
 DROP TABLE CaracteristicasAluno;
 DROP TABLE Caracteristicas;
@@ -70,9 +73,46 @@ INSERT INTO CaracteristicasAluno (IdAluno, IdCaracteristica) VALUES
 ((SELECT Id FROM Alunos WHERE Nome = 'Joaquim'),(SELECT Id FROM Caracteristicas WHERE Nome = 'Empático(a)')),
 ((SELECT Id FROM Alunos WHERE Nome = 'Joaquim'),(SELECT Id FROM Caracteristicas WHERE Nome = 'Altruísta'));						  
 
+
+/*Execute os seguintes comandos abaixo:
+Selecione o nome do aluno e as características;
+Selecione a quantidade de alunos que que são altruístas;
+Selecione a quantidade de alunos para cada categoria,
+agrupando pela categoria;
+Selecione as características da aluna Sophia.*/
+
+
+
+
+SELECT 
+name 'Nome', categories.name 'Categoria' 
+FROM Alunos
+JOIN categorias ON (Caracteristicas.id = Alunos.idCaracteristicas)
+WHERE name = '' AND caracteristicas = ''
+ORDER BY Nome DESC;
+
 SELECT a.Nome, a.Idade, c.Nome 'Características'
 FROM Alunos a
 LEFT JOIN CaracteristicasAluno ca
 ON ca.IdAluno = a.Id
 LEFT JOIN Caracteristicas c
 ON ca.IdCaracteristica = c.Id ORDER BY a.Nome;
+
+SELECT a.Nome,'Nome'
+FROM Alunos a
+LEFT JOIN Alunos ca
+ON ca.IdAluno = a.Id
+LEFT JOIN Altruístas 
+ON ca.IdNames = c.Id ORDER BY a.Nome;
+
+SELECT Alunos, COUNT (Nome.id) 'Quantidade de Alunos'
+FROM Alunos
+JOIN Alunos ON(Alunos.idCategorias = Categorias.id)
+GROUP BY  Categorias.name
+ORDER BY COUNT (Alunos.id)DESC;
+
+SELECT COUNT (Nomes.id) 'Caracteristicas da aluna Sophia '
+FROM Alunos
+JOIN Alunos ON(Alunos.idCategoria = IdNome)
+WHERE categories.name = 'Sophia';
+

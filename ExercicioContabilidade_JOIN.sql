@@ -1,3 +1,6 @@
+----CONTABILIDADE----
+
+
 /*
 DROP TABLE Celulares;
 DROP TABLE Emails;
@@ -7,7 +10,7 @@ DROP TABLE ContasReceber;
 */
 
 CREATE TABLE Clientes(Id INT IDENTITY, 
-					  Nome TEXT NOT NULL, 
+					  Nome VARCHAR NOT NULL, 
 					  Sexo CHAR(1) NOT NULL);
 
 ALTER TABLE Clientes ADD CONSTRAINT PKCliente PRIMARY KEY(Id);
@@ -75,7 +78,7 @@ INSERT INTO Emails (IdCliente, Valor) VALUES
 (1, 'germana@gmail.com'),
 (2, 'salvador@hotmail.com');
 
-/* Deu ruim, Tipo TEXT de Nome Clientes
+/* Deu ruim, Tipo TEXT de Nome Clientes*/
 INSERT INTO ContasReceber(IdCliente, DataRecebimento, ValorRecebido) VALUES 
 ((SELECT Id FROM Clientes WHERE Nome = 'Germana'), '2018-06-15', 500.00),
 ((SELECT Id FROM Clientes WHERE Nome = 'Salvador'), '2018-06-29', 320.50),
@@ -97,4 +100,63 @@ INSERT INTO ContasReceber(IdCliente, DataRecebimento, ValorRecebido) VALUES
 ((SELECT Id FROM Clientes WHERE Nome = 'Aluísio'), '2018-11-30', 123.45),
 ((SELECT Id FROM Clientes WHERE Nome = 'Úrsula'), '2018-09-07', 987.65),
 ((SELECT Id FROM Clientes WHERE Nome = 'Salvador'), '2018-07-06', 456.00);
-*/
+
+
+/*E-mails:
+i. Selecione o nome e os e-mails;*/
+
+SELECT 
+	Clientes 'Nome',
+	Emails 'Email'
+FROM Nome, Email
+JOIN Clientes ON (Nome.idClientes = Email.id);
+
+
+/*ii. Selecione o nome e os e-mails ordenando pelo nome do
+cliente e pelo e-mail;*/
+
+SELECT 
+	Nome 'Nome',
+	Email 'Emails'
+FROM Nome, Emails
+JOIN Clientes ON (Nome.idClientes = Email.id)
+ORDER BY nome.IdCliente DESC Emails;
+
+/*iii. Apresente o nome cliente, e-mail com o maior e-mail de
+cada cliente.*/
+
+/*Celulares:
+iv. Selecione o nome e os celulares;*/
+
+SELECT 
+	Nome 'Nome',
+	Celulares 'Habilidade'
+FROM Clientes
+JOIN Clientes ON (Celulares.idNome = Nome.id);
+
+/*v. Selecione o nome e os celulares quanto o status for ativo.*/
+
+SELECT Nome = 'Nome', Celulares = 'Celulares' WHERE status = 'ativo'
+
+/*Contas a Pagar:
+vi. Alterar o valor pago para R$ 100,00, data de pagamento
+como dia de hoje e status para pago quando o cliente for
+Salvador;*/
+
+
+
+/*vii. Alterar o valor pago para 700,00 , data de pagamento
+como dia de ontem e status para pago quando o cliente
+for Salvador e o valor da conta for R$ 700,00;*/
+
+/*viii. Selecione o nome do cliente, valor , data de vencimento,
+data de vencimento e valor pago;*/
+
+/*ix. Selecione o nome do cliente, valor, e o mês de
+vencimento;*/
+
+/*x. Selecione o valor total das contas a pagar com o nome do
+cliente ordenando pelo nome do cliente. Dica: deve
+agrupar.*/
+
+
